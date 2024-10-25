@@ -1,0 +1,44 @@
+
+-- Drop existing tables if they exist
+DROP TABLE IF EXISTS engagement_post_collection CASCADE;
+DROP TABLE IF EXISTS collection CASCADE;
+DROP TABLE IF EXISTS engagement_post_product_mapping CASCADE;
+DROP TABLE IF EXISTS engagement_post_product CASCADE;
+DROP TABLE IF EXISTS engagement_post CASCADE;
+
+-- Create tables again
+CREATE TABLE engagement_post (
+    id SERIAL PRIMARY KEY,
+    tenant_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    content_url TEXT NOT NULL,
+    views INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE engagement_post_product (
+    id SERIAL PRIMARY KEY,
+    product_name TEXT NOT NULL,
+    product_image TEXT NOT NULL,
+    sku_number TEXT NOT NULL
+);
+
+CREATE TABLE engagement_post_product_mapping (
+    id SERIAL PRIMARY KEY,
+    post_id INT REFERENCES engagement_post(id) ON DELETE CASCADE,
+    product_id INT REFERENCES engagement_post_product(id) ON DELETE CASCADE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE collection (
+    id SERIAL PRIMARY KEY,
+    collection_name TEXT NOT NULL
+);
+
+CREATE TABLE engagement_post_collection (
+    id SERIAL PRIMARY KEY,
+    post_id INT REFERENCES engagement_post(id) ON DELETE CASCADE,
+    collection_id INT REFERENCES collection(id) ON DELETE CASCADE,
+    duration_in_seconds INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

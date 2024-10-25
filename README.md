@@ -5,14 +5,14 @@ Placement Project from  Shivakumar R (Besant Tech)
 
 
 
-#Engagement API
+# Engagement API
 Overview
 Purpose: The Engagement API is designed to manage engagement data related to posts and products stored in a PostgreSQL database. It provides endpoints for creating posts, products, collections, mapping products to posts, and retrieving top posts and products based on views and total view duration.
 
 
 
 
-#Prerequisites
+# Prerequisites
 1. Python 3.12: Ensure you have Python version 3.12 installed on your machine.
 2. PostgreSQL: You need to have PostgreSQL installed and running. You should also create a database named engagement (or update the code to reflect your database name).
 3. Required Libraries: Install the necessary Python libraries, specifically Flask for creating the web API and psycopg2 for PostgreSQL database connectivity.
@@ -20,7 +20,7 @@ Purpose: The Engagement API is designed to manage engagement data related to pos
 
 
 
-#Database Setup
+# Database Setup
 1. Drop Existing Tables: If you have previously created tables that you want to refresh, run the provided SQL commands to drop the old tables. This ensures there are no conflicts with existing data.
 
 2. Create Tables: After dropping the old tables, run the SQL commands to create new ones. The tables defined are:
@@ -33,7 +33,7 @@ Purpose: The Engagement API is designed to manage engagement data related to pos
 
 
 
-#API Endpoints
+# API Endpoints
 
 1.  POST /posts:
       Purpose: Create a new post.
